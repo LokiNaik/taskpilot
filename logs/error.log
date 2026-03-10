@@ -1,0 +1,2 @@
+[2026-03-10 11:05:14] ERROR: Database connection failed: password authentication failed for user "postgres"
+[2026-03-10 11:24:32] ERROR: Database connection failed: password authentication failed for user "postgres"

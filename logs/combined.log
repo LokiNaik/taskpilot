@@ -1,0 +1,57 @@
+[2026-03-10 11:05:14] ERROR: Database connection failed: password authentication failed for user "postgres"
+[2026-03-10 11:05:30] INFO: Database connected ✓
+[2026-03-10 11:05:30] INFO: WorkLog AI running → http://localhost:3000
+[2026-03-10 11:05:30] INFO: Health check     → http://localhost:3000/api/health
+[2026-03-10 11:05:34] INFO: GET /api/health
+[2026-03-10 11:05:34] INFO: GET /favicon.ico
+[2026-03-10 11:06:35] INFO: GET /api/health
+[2026-03-10 11:06:52] INFO: GET /api/tasks
+[2026-03-10 11:10:00] INFO: Cron: checking reminders...
+[2026-03-10 11:15:00] INFO: Cron: checking reminders...
+[2026-03-10 11:20:00] INFO: Cron: checking reminders...
+[2026-03-10 11:21:14] INFO: GET /api/users
+[2026-03-10 11:21:47] INFO: GET /api/users
+[2026-03-10 11:24:32] ERROR: Database connection failed: password authentication failed for user "postgres"
+[2026-03-10 11:25:04] INFO: Database connected ✓
+[2026-03-10 11:25:04] INFO: WorkLog AI running → http://localhost:3000
+[2026-03-10 11:25:04] INFO: Health check     → http://localhost:3000/api/health
+[2026-03-10 11:30:00] INFO: Cron: checking reminders...
+[2026-03-10 11:30:50] INFO: GET /api/users
+[2026-03-10 11:30:51] INFO: GET /api/tasks
+[2026-03-10 11:31:04] INFO: POST /api/ai/add
+[2026-03-10 11:31:15] INFO: GET /api/digest
+[2026-03-10 11:31:15] INFO: No tasks found for user e34ae549-5996-4b05-8b24-dc13b5e7b0bd on 2026-03-10
+[2026-03-10 11:31:18] INFO: POST /api/digest/generate
+[2026-03-10 11:31:18] INFO: No tasks found for user e34ae549-5996-4b05-8b24-dc13b5e7b0bd on 2026-03-10
+[2026-03-10 11:31:19] INFO: POST /api/digest/generate
+[2026-03-10 11:31:19] INFO: No tasks found for user e34ae549-5996-4b05-8b24-dc13b5e7b0bd on 2026-03-10
+[2026-03-10 11:31:42] INFO: POST /api/ai/add
+[2026-03-10 11:33:44] INFO: GET /api/health
+[2026-03-10 11:35:00] INFO: Cron: checking reminders...
+[2026-03-10 11:36:28] INFO: Database connected ✓
+[2026-03-10 11:36:28] INFO: WorkLog AI running → http://localhost:3000
+[2026-03-10 11:36:28] INFO: Health check     → http://localhost:3000/api/health
+[2026-03-10 11:37:39] INFO: POST /api/users
+[2026-03-10 11:38:07] INFO: POST /api/ai/add
+[2026-03-10 11:40:00] INFO: Cron: checking reminders...
+[2026-03-10 11:45:00] INFO: Cron: checking reminders...
+[2026-03-10 11:45:30] INFO: POST /api/ai/add
+[2026-03-10 11:45:37] INFO: POST /api/ai/add
+[2026-03-10 11:45:42] INFO: GET /api/users
+[2026-03-10 11:45:43] INFO: GET /api/tasks
+[2026-03-10 11:45:46] INFO: POST /api/ai/add
+[2026-03-10 11:47:29] INFO: Database connected ✓
+[2026-03-10 11:47:29] INFO: WorkLog AI running → http://localhost:3000
+[2026-03-10 11:47:29] INFO: Health check     → http://localhost:3000/api/health
+[2026-03-10 11:47:37] INFO: POST /api/ai/add
+[2026-03-10 11:47:50] INFO: GET /api/digest
+[2026-03-10 11:47:55] INFO: No tasks found for user e34ae549-5996-4b05-8b24-dc13b5e7b0bd on 2026-03-10
+[2026-03-10 11:47:58] INFO: POST /api/digest/generate
+[2026-03-10 11:48:01] INFO: No tasks found for user e34ae549-5996-4b05-8b24-dc13b5e7b0bd on 2026-03-10
+[2026-03-10 11:49:16] INFO: POST /api/ai/add
+[2026-03-10 11:49:28] INFO: GET /api/tasks
+[2026-03-10 11:49:31] INFO: GET /api/tasks
+[2026-03-10 11:49:38] INFO: GET /api/tasks
+[2026-03-10 11:50:00] INFO: Cron: checking reminders...
+[2026-03-10 15:45:00] INFO: Cron: checking reminders...
+[2026-03-10 21:50:00] INFO: Cron: checking reminders...
