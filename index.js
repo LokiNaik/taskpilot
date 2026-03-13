@@ -1,5 +1,4 @@
 require('dotenv').config();
-require('dotenv-flow').config();
 const express  = require('express');
 const cors     = require('cors');
 const cron     = require('node-cron');
