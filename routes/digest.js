@@ -7,8 +7,8 @@ const digestService = require('../services/digestService');
 // Returns existing digest or generates one on the fly
 router.get('/', async (req, res) => {
   try {
-    const { userId, date } = req.query;
-    if (!userId) return res.status(400).json({ error: 'userId is required' });
+     const userId = req.query.userId;
+    if (!userId) return res.status(400).json({ error: 'userId required' });
 
     const dateStr = date || new Date().toISOString().split('T')[0];
 
@@ -34,8 +34,8 @@ router.get('/', async (req, res) => {
 // Force regenerate digest for a date
 router.post('/generate', async (req, res) => {
   try {
-    const { userId, date } = req.body;
-    if (!userId) return res.status(400).json({ error: 'userId is required' });
+    const userId = req.body.userId;
+    if (!userId) return res.status(400).json({ error: 'userId required' });
 
     const result = await digestService.generateForUser(userId, date);
     res.json(result || { message: 'No tasks found' });

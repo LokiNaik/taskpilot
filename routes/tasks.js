@@ -1,40 +1,39 @@
-const express   = require('express');
-const router    = express.Router();
-const db        = require('../config/db');
-const aiService = require('../services/aiService');
+const router = require('express').Router();
+const db     = require('../config/db');
+const auth   = require('../middleware/auth');
 
-// ── GET /api/tasks?userId=&date= ─────────────────────────────
+// Apply auth to ALL routes
+router.use(auth);
+
+// GET all tasks — userId JWT se lega, query param se nahi
 router.get('/', async (req, res) => {
   try {
-    const { userId, date, status } = req.query;
+    const { date, status } = req.query;
+    const userId = req.userId; // ← JWT se, safe!
 
-    if (!userId) return res.status(400).json({ error: 'userId is required' });
+    let query  = `SELECT * FROM tasks WHERE user_id=$1`;
+    let values = [userId];
+    let idx    = 2;
 
-    let query  = 'SELECT * FROM tasks WHERE user_id = $1';
-    const params = [userId];
+    if (date)   { query += ` AND (log_date=$${idx} OR due_date=$${idx})`; values.push(date); idx++; }
+    if (status) { query += ` AND status=$${idx}`;  values.push(status); idx++; }
 
-    if (date) {
-      params.push(date);
-      query += ` AND log_date = $${params.length}`;
-    }
-    if (status) {
-      params.push(status);
-      query += ` AND status = $${params.length}`;
-    }
+    query += ` ORDER BY ai_priority_score DESC NULLS LAST, created_at DESC`;
 
-    query += ' ORDER BY ai_priority_score DESC NULLS LAST, created_at DESC';
-
-    const { rows } = await db.query(query, params);
-    res.json({ tasks: rows });
+    const { rows } = await db.query(query, values);
+    res.json(rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// ── GET /api/tasks/:id ───────────────────────────────────────
+// GET single task — ownership check
 router.get('/:id', async (req, res) => {
   try {
-    const { rows } = await db.query('SELECT * FROM tasks WHERE id = $1', [req.params.id]);
+    const { rows } = await db.query(
+      'SELECT * FROM tasks WHERE id=$1 AND user_id=$2',
+      [req.params.id, req.userId]
+    );
     if (!rows.length) return res.status(404).json({ error: 'Task not found' });
     res.json(rows[0]);
   } catch (err) {
@@ -42,86 +41,83 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// ── POST /api/tasks — create task manually ───────────────────
+// POST create task
 router.post('/', async (req, res) => {
   try {
-    const {
-      userId, title, description,
-      due_date, due_time, priority,
-      tags, reminder_at, meeting_id,
-    } = req.body;
-
-    if (!userId || !title) {
-      return res.status(400).json({ error: 'userId and title are required' });
-    }
+    const { title, description, priority, due_date, due_time, tags, source } = req.body;
+    if (!title) return res.status(400).json({ error: 'title required' });
 
     const { rows } = await db.query(
       `INSERT INTO tasks
-         (user_id, title, description, due_date, due_time, priority, tags, reminder_at, meeting_id)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+        (user_id, title, description, priority, due_date, due_time, tags, source, log_date)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,CURRENT_DATE)
        RETURNING *`,
-      [userId, title, description, due_date, due_time, priority || 'medium', tags || [], reminder_at, meeting_id]
+      [
+        req.userId,
+        title,
+        description || null,
+        priority    || 'medium',
+        due_date    || null,
+        due_time    || null,
+        tags        || [],
+        source      || 'manual'
+      ]
     );
-
-    const task = rows[0];
-
-    // AI score in background (don't block the response)
-    aiService.computePriorityScore(task)
-      .then(({ score, reason }) =>
-        db.query('UPDATE tasks SET ai_priority_score=$1, ai_notes=$2 WHERE id=$3', [score, reason, task.id])
-      )
-      .catch(() => {});
-
-    res.status(201).json(task);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// ── PATCH /api/tasks/:id — update status or any field ────────
-router.patch('/:id', async (req, res) => {
-  try {
-    const allowed = ['title', 'description', 'status', 'priority', 'due_date', 'due_time', 'reminder_at', 'tags'];
-    const updates = [];
-    const values  = [];
-
-    for (const key of allowed) {
-      if (req.body[key] !== undefined) {
-        values.push(req.body[key]);
-        updates.push(`${key} = $${values.length}`);
-      }
-    }
-
-    if (!updates.length) return res.status(400).json({ error: 'No valid fields to update' });
-
-    // Log status change to history
-    if (req.body.status) {
-      const { rows: old } = await db.query('SELECT status FROM tasks WHERE id=$1', [req.params.id]);
-      if (old[0] && old[0].status !== req.body.status) {
-        await db.query(
-          `INSERT INTO task_history (task_id, old_status, new_status) VALUES ($1,$2,$3)`,
-          [req.params.id, old[0].status, req.body.status]
-        );
-      }
-    }
-
-    values.push(req.params.id);
-    const { rows } = await db.query(
-      `UPDATE tasks SET ${updates.join(', ')} WHERE id = $${values.length} RETURNING *`,
-      values
-    );
-
-    if (!rows.length) return res.status(404).json({ error: 'Task not found' });
     res.json(rows[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// ── DELETE /api/tasks/:id ─────────────────────────────────────
+// PATCH update — ownership check
+router.patch('/:id', async (req, res) => {
+  try {
+    // Verify ownership first
+    const check = await db.query(
+      'SELECT id FROM tasks WHERE id=$1 AND user_id=$2',
+      [req.params.id, req.userId]
+    );
+    if (!check.rows.length) return res.status(403).json({ error: 'Access denied' });
+
+    const allowed = ['title','description','status','priority',
+                     'due_date','due_time','tags','ai_notes'];
+    const updates = [];
+    const values  = [];
+    let idx = 1;
+
+    for (const key of allowed) {
+      if (req.body[key] !== undefined) {
+        updates.push(`${key}=$${idx++}`);
+        if ((key === 'due_date' || key === 'due_time') && req.body[key] === '') {
+          values.push(null);
+        } else {
+          values.push(req.body[key]);
+        }
+      }
+    }
+
+    if (!updates.length) return res.status(400).json({ error: 'No valid fields' });
+    updates.push(`updated_at=NOW()`);
+    values.push(req.params.id);
+
+    const { rows } = await db.query(
+      `UPDATE tasks SET ${updates.join(',')} WHERE id=$${idx} RETURNING *`,
+      values
+    );
+    res.json(rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// DELETE — ownership check
 router.delete('/:id', async (req, res) => {
   try {
-    await db.query('DELETE FROM tasks WHERE id = $1', [req.params.id]);
+    const result = await db.query(
+      'DELETE FROM tasks WHERE id=$1 AND user_id=$2 RETURNING id',
+      [req.params.id, req.userId]
+    );
+    if (!result.rows.length) return res.status(403).json({ error: 'Access denied' });
     res.json({ deleted: true });
   } catch (err) {
     res.status(500).json({ error: err.message });

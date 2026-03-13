@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('dotenv-flow').config();
 const express  = require('express');
 const cors     = require('cors');
 const cron     = require('node-cron');
@@ -30,10 +31,16 @@ app.use('/api/tasks',  taskRoutes);
 app.use('/api/ai',     aiRoutes);
 app.use('/api/digest', digestRoutes);
 app.use('/api/users',  userRoutes);
+app.use('/api/auth',  require('./routes/auth'));
+app.use('/api/notes', require('./routes/notes'));
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', time: new Date() });
 });
+
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'http://localhost:4200'
+}));
 
 // ── Cron Jobs ────────────────────────────────────────────────
 // Every 5 min → check and fire reminders
