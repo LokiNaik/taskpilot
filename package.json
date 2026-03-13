@@ -2,19 +2,18 @@
   "name": "worklog-ai",
   "version": "1.0.0",
   "main": "index.js",
- "scripts": {
-  "start":       "node index.js",
-  "start:local": "set NODE_ENV=local && node index.js",
-  "start:prod":  "set NODE_ENV=production && node index.js",
-  "dev":         "set NODE_ENV=local && nodemon index.js"
-},
+  "scripts": {
+    "start": "node index.js",
+    "start:local": "set NODE_ENV=local && node index.js",
+    "start:prod": "set NODE_ENV=production && node index.js",
+    "dev": "set NODE_ENV=local && nodemon index.js"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.24.3",
     "@google/generative-ai": "^0.24.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "dotenv-flow": "^4.1.0",
+    "dotenv": "^16.6.1",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.3",
     "node-cron": "^3.0.3",

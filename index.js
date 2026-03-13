@@ -18,6 +18,10 @@ const aiService       = require('./services/aiService');
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'local'}` });
+}
+
 // ── Middleware ───────────────────────────────────────────────
 app.use(cors());
 app.use(express.json());
