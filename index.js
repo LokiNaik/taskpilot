@@ -47,28 +47,28 @@ app.use(cors({
 
 // ── Cron Jobs ────────────────────────────────────────────────
 // Every 5 min → check and fire reminders
-cron.schedule('*/5 * * * *', () => {
-  logger.info('Cron: checking reminders...');
-  logger.info('Cron:...Skipped...');
-  // as of now keep on hold
-  // reminderService.sendDueReminders();
-});
+// cron.schedule('*/5 * * * *', () => {
+//   logger.info('Cron: checking reminders...');
+//   logger.info('Cron:...Skipped...');
+//   // as of now keep on hold
+//   // reminderService.sendDueReminders();
+// });
 
-// 8:00 AM IST (2:30 UTC) → generate daily digest
-cron.schedule('30 2 * * *', () => {
-  logger.info('Cron: generating daily digests...');
-  logger.info('Cron:...Skipped...');
-  // not needed now
-  // digestService.generateForAllUsers();
-});
+// // 8:00 AM IST (2:30 UTC) → generate daily digest
+// cron.schedule('30 2 * * *', () => {
+//   logger.info('Cron: generating daily digests...');
+//   logger.info('Cron:...Skipped...');
+//   // not needed now
+//   // digestService.generateForAllUsers();
+// });
 
-// 7:00 AM IST (1:30 UTC) → AI re-prioritize all tasks
-cron.schedule('30 1 * * *', () => {
-  logger.info('Cron: re-prioritizing tasks...');
-  logger.info('Cron:...Skipped...');
-  // not needed now
-  // aiService.reprioritizeForAllUsers();
-});
+// // 7:00 AM IST (1:30 UTC) → AI re-prioritize all tasks
+// cron.schedule('30 1 * * *', () => {
+//   logger.info('Cron: re-prioritizing tasks...');
+//   logger.info('Cron:...Skipped...');
+//   // not needed now
+//   // aiService.reprioritizeForAllUsers();
+// });
 
 // ── Start Server ─────────────────────────────────────────────
 async function start() {

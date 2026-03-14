@@ -8214,3 +8214,148 @@
 [2026-03-13 17:21:37] INFO: PATCH /api/tasks/19819878-373e-408f-afa5-7fe4f79d3455
 [2026-03-13 17:21:40] INFO: GET /api/tasks
 [2026-03-13 17:21:44] INFO: GET /api/tasks
+[2026-03-13 18:07:08] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:09:39] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:09:56] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:09:56] ERROR: Make sure PostgreSQL is running and .env is configured correctly
+[2026-03-13 18:09:56] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:15:01] INFO: Database connected ✓
+[2026-03-13 18:15:01] INFO: Database connected ✓
+[2026-03-13 18:15:01] INFO: WorkLog AI running → http://localhost:3000
+[2026-03-13 18:15:01] INFO: Health check     → http://localhost:3000/api/health
+[2026-03-13 18:15:13] INFO: POST /api/auth/login
+[2026-03-13 18:15:13] INFO: GET /api/tasks
+[2026-03-13 18:15:26] INFO: POST /api/ai/add
+[2026-03-13 18:15:35] INFO: POST /api/ai/add
+[2026-03-13 18:15:46] INFO: GET /api/users
+[2026-03-13 18:15:46] INFO: GET /api/tasks
+[2026-03-13 18:15:58] INFO: POST /api/ai/add
+[2026-03-13 18:16:02] INFO: GET /api/users
+[2026-03-13 18:16:02] INFO: GET /api/tasks
+[2026-03-13 18:16:05] INFO: GET /api/users
+[2026-03-13 18:16:05] INFO: GET /api/tasks
+[2026-03-13 18:16:14] INFO: POST /api/ai/add
+[2026-03-13 18:16:19] INFO: GET /api/users
+[2026-03-13 18:16:19] INFO: GET /api/tasks
+[2026-03-13 18:16:28] INFO: POST /api/ai/add
+[2026-03-13 18:16:32] INFO: GET /api/users
+[2026-03-13 18:16:32] INFO: GET /api/tasks
+[2026-03-13 18:16:41] INFO: POST /api/ai/add
+[2026-03-13 18:16:43] INFO: GET /api/users
+[2026-03-13 18:16:43] INFO: GET /api/tasks
+[2026-03-13 18:16:48] INFO: GET /api/users
+[2026-03-13 18:16:48] INFO: GET /api/tasks
+[2026-03-13 18:16:51] INFO: GET /api/tasks
+[2026-03-13 18:16:55] INFO: GET /api/tasks
+[2026-03-13 18:16:59] INFO: GET /api/tasks
+[2026-03-13 18:17:10] INFO: GET /api/tasks
+[2026-03-13 18:17:27] INFO: POST /api/ai/add
+[2026-03-13 18:17:30] INFO: GET /api/users
+[2026-03-13 18:17:30] INFO: GET /api/tasks
+[2026-03-13 18:17:37] INFO: GET /api/users
+[2026-03-13 18:17:37] INFO: GET /api/tasks
+[2026-03-13 18:17:44] INFO: GET /api/tasks
+[2026-03-13 18:17:46] INFO: GET /api/tasks
+[2026-03-13 18:17:52] INFO: GET /api/tasks
+[2026-03-13 18:17:54] INFO: GET /api/tasks
+[2026-03-13 18:17:57] INFO: GET /api/tasks
+[2026-03-13 18:17:59] INFO: GET /api/tasks
+[2026-03-13 18:18:01] INFO: GET /api/tasks
+[2026-03-13 18:20:00] INFO: Cron: checking reminders...
+[2026-03-13 18:20:00] INFO: Cron:...Skipped...
+[2026-03-13 18:22:05] INFO: GET /api/users
+[2026-03-13 18:22:05] INFO: GET /api/tasks
+[2026-03-13 18:22:17] INFO: GET /api/users
+[2026-03-13 18:22:17] INFO: GET /api/tasks
+[2026-03-13 18:22:31] INFO: GET /api/users
+[2026-03-13 18:22:31] INFO: GET /api/tasks
+[2026-03-13 18:23:12] INFO: GET /api/users
+[2026-03-13 18:23:12] INFO: GET /api/tasks
+[2026-03-13 18:23:18] INFO: GET /api/users
+[2026-03-13 18:23:18] INFO: GET /api/tasks
+[2026-03-13 18:23:21] INFO: GET /api/tasks
+[2026-03-13 18:23:24] INFO: GET /api/tasks
+[2026-03-13 18:23:26] INFO: GET /api/tasks
+[2026-03-13 18:23:28] INFO: GET /api/tasks
+[2026-03-13 18:23:34] INFO: GET /api/tasks
+[2026-03-13 18:23:35] INFO: GET /api/tasks
+[2026-03-13 18:23:38] INFO: GET /api/tasks
+[2026-03-13 18:23:41] INFO: GET /api/tasks
+[2026-03-13 18:23:42] INFO: GET /api/tasks
+[2026-03-13 18:23:43] INFO: GET /api/tasks
+[2026-03-13 18:23:45] INFO: GET /api/tasks
+[2026-03-13 18:25:00] INFO: Cron: checking reminders...
+[2026-03-13 18:25:00] INFO: Cron:...Skipped...
+[2026-03-13 19:03:42] INFO: GET /api/users
+[2026-03-13 19:03:42] INFO: GET /api/tasks
+[2026-03-13 21:57:02] INFO: GET /api/users
+[2026-03-13 21:57:02] INFO: GET /api/tasks
+[2026-03-13 23:08:49] INFO: GET /api/users
+[2026-03-13 23:08:49] INFO: GET /api/tasks
+[2026-03-14 10:30:00] INFO: Cron: checking reminders...
+[2026-03-14 10:30:00] INFO: Cron:...Skipped...
+[2026-03-14 10:35:00] INFO: Cron: checking reminders...
+[2026-03-14 10:35:00] INFO: Cron:...Skipped...
+[2026-03-14 10:35:00] INFO: GET /api/users
+[2026-03-14 10:35:00] INFO: GET /api/tasks
+[2026-03-14 10:35:02] INFO: GET /api/users
+[2026-03-14 10:35:02] INFO: GET /api/tasks
+[2026-03-14 10:35:04] INFO: GET /api/tasks
+[2026-03-14 10:35:09] INFO: GET /api/tasks
+[2026-03-14 10:35:33] INFO: GET /api/users
+[2026-03-14 10:35:33] INFO: GET /api/tasks
+[2026-03-14 10:35:47] INFO: GET /api/tasks
+[2026-03-14 10:35:51] INFO: GET /api/tasks
+[2026-03-14 10:35:53] INFO: GET /api/tasks
+[2026-03-14 10:35:55] INFO: GET /api/tasks
+[2026-03-14 10:35:57] INFO: GET /api/tasks
+[2026-03-14 10:36:03] INFO: PATCH /api/tasks/a8d67288-f3e9-4539-8d2a-649422bd3bfc
+[2026-03-14 10:36:15] INFO: PATCH /api/tasks/a8d67288-f3e9-4539-8d2a-649422bd3bfc
+[2026-03-14 10:36:21] INFO: GET /api/users
+[2026-03-14 10:36:21] INFO: GET /api/tasks
+[2026-03-14 10:36:23] INFO: GET /api/tasks
+[2026-03-14 10:40:00] INFO: Cron: checking reminders...
+[2026-03-14 10:40:00] INFO: Cron:...Skipped...
+[2026-03-14 10:42:10] INFO: GET /api/users
+[2026-03-14 10:42:10] INFO: GET /api/tasks
+[2026-03-14 10:42:16] INFO: GET /api/users
+[2026-03-14 10:42:16] INFO: GET /api/tasks
+[2026-03-14 10:42:37] INFO: GET /api/users
+[2026-03-14 10:42:37] INFO: GET /api/tasks
+[2026-03-14 10:42:43] INFO: GET /api/tasks
+[2026-03-14 10:42:46] INFO: GET /api/tasks
+[2026-03-14 10:44:17] INFO: GET /api/users
+[2026-03-14 10:44:17] INFO: GET /api/tasks
+[2026-03-14 10:44:21] INFO: GET /api/users
+[2026-03-14 10:44:21] INFO: GET /api/tasks
+[2026-03-14 10:44:26] INFO: GET /api/tasks
+[2026-03-14 10:45:00] INFO: Cron: checking reminders...
+[2026-03-14 10:45:00] INFO: Cron:...Skipped...
+[2026-03-14 10:50:00] INFO: Cron: checking reminders...
+[2026-03-14 10:50:00] INFO: Cron:...Skipped...
+[2026-03-14 10:55:00] INFO: Cron: checking reminders...
+[2026-03-14 10:55:00] INFO: Cron:...Skipped...
+[2026-03-14 11:00:00] INFO: Cron: checking reminders...
+[2026-03-14 11:00:00] INFO: Cron:...Skipped...
+[2026-03-14 11:05:00] INFO: Cron: checking reminders...
+[2026-03-14 11:05:00] INFO: Cron:...Skipped...
+[2026-03-14 11:10:00] INFO: Cron: checking reminders...
+[2026-03-14 11:10:00] INFO: Cron:...Skipped...
+[2026-03-14 11:40:00] INFO: Cron: checking reminders...
+[2026-03-14 11:40:00] INFO: Cron:...Skipped...
+[2026-03-14 11:45:00] INFO: Cron: checking reminders...
+[2026-03-14 11:45:00] INFO: Cron:...Skipped...
+[2026-03-14 13:10:00] INFO: Cron: checking reminders...
+[2026-03-14 13:10:00] INFO: Cron:...Skipped...
+[2026-03-14 13:15:00] INFO: Cron: checking reminders...
+[2026-03-14 13:15:00] INFO: Cron:...Skipped...
+[2026-03-14 13:20:00] INFO: Cron: checking reminders...
+[2026-03-14 13:20:00] INFO: Cron:...Skipped...
+[2026-03-14 13:25:00] INFO: Cron: checking reminders...
+[2026-03-14 13:25:00] INFO: Cron:...Skipped...
+[2026-03-14 13:30:00] INFO: Cron: checking reminders...
+[2026-03-14 13:30:00] INFO: Cron:...Skipped...
+[2026-03-14 13:33:41] INFO: Database connected ✓
+[2026-03-14 13:33:41] INFO: Database connected ✓
+[2026-03-14 13:33:41] INFO: WorkLog AI running → http://localhost:3000
+[2026-03-14 13:33:41] INFO: Health check     → http://localhost:3000/api/health

@@ -1,3 +1,7 @@
 [2026-03-10 11:05:14] ERROR: Database connection failed: password authentication failed for user "postgres"
 [2026-03-10 11:24:32] ERROR: Database connection failed: password authentication failed for user "postgres"
 [2026-03-11 16:45:18] ERROR: Database connection failed: connection is insecure (try using `sslmode=require`)
+[2026-03-13 18:07:08] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:09:39] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:09:56] ERROR: Database connection failed: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+[2026-03-13 18:09:56] ERROR: Make sure PostgreSQL is running and .env is configured correctly
